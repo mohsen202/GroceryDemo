@@ -1,0 +1,103 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion '29.0.2'
+    defaultConfig {
+        applicationId "com.moh3n.eshop1"
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 3
+        versionName "1.2"
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        dexOptions {
+            preDexLibraries = false
+        }
+        lintOptions {
+            checkReleaseBuilds false
+            // Or, if you prefer, you can continue to check for errors in release builds,
+            // but continue the build even when errors are found:
+            abortOnError false
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+repositories {
+    mavenCentral()
+    maven {
+        url "https://s3-ap-southeast-1.amazonaws.com/godel-release/godel/"
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    implementation 'com.google.firebase:firebase-messaging:20.1.3'
+    implementation 'com.google.firebase:firebase-analytics:17.2.3'
+
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    //noinspection GradleDynamicVersion,GradleCompatible
+
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'com.android.volley:volley:1.1.1'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.nineoldandroids:library:2.4.0'
+
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation "androidx.multidex:multidex:2.0.1"
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
+    //implementation 'com.google.firebase:firebase-core:17.2.3'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.5'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.9.5'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.9.0'
+    implementation 'com.daimajia.swipelayout:library:1.2.0@aar'
+    testImplementation 'junit:junit:4.12'
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
+    implementation 'org.apache.commons:commons-lang3:3.4'
+    implementation 'com.koushikdutta.ion:ion:2.2.1'
+    implementation files('libs/PGSDK_v1.0.jar')
+    implementation 'com.github.franmontiel:LocaleChanger:0.9.2'
+
+
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+
+    implementation 'com.shamanland:fonticon:0.1.8'
+    implementation('com.nispok:snackbar:2.11.0') {
+        // exclusion is not necessary, but generally a good idea.
+        exclude group: 'com.google.android', module: 'support-v4'
+    }
+    implementation 'com.google.guava:guava:24.1-jre'
+    implementation 'org.bouncycastle:bcprov-jdk16:1.46'
+    implementation 'com.razorpay:checkout:1.5.16'
+
+    implementation 'commons-codec:commons-codec:1.10'
+    //implementation 'com.google.firebase:firebase-appindexing:19.1.0'
+    implementation files('libs/httpmime-4.2.5-sources.jar')
+    implementation project(':image-slider')
+
+}
+apply plugin: 'com.google.gms.google-services'
